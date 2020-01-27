@@ -22,6 +22,15 @@ void dibujarCirculo(GLfloat x, GLfloat y, GLfloat radio) {
 	glEnd();
 }
 
+void dibujarSol(GLfloat x, GLfloat y, GLfloat radio) {
+	glBegin(GL_POLYGON);
+	glColor3f(1.0f, 1.0f, 0.0f);
+	for (double i = 0; i < 360.0; i += 5.0) {
+		glVertex3f((radio * cos(i * 3.14159 / 180.0)) + x, (radio * sin(i * 3.14159 / 180.0) + y), 0.0f);
+	}
+	glEnd();
+}
+
 void dibujarNube(GLfloat x, GLfloat y, GLfloat radio) {
 	glBegin(GL_POLYGON);
 	glColor3f(1.0f, 1.0f, 1.0f);
@@ -83,19 +92,64 @@ void dibujarArbol() {
 	glBegin(GL_POLYGON);
 	glColor3f(0.8f, 0.5f, 0.3f);
 
-	glVertex3f(-0.3f, 0.4f, 0.0f);
-	glVertex3f(-0.3f, -0.6f, 0.0f);
-	glVertex3f(0.7f, -0.6f, 0.0f);
-	glVertex3f(0.7f, 0.4f, 0.0f);
-	glVertex3f(-0.3f, 0.4f, 0.0f);
+	glVertex3f(-0.8f, 0.2f, 0.0f);
+	glVertex3f(-0.8f, -0.65f, 0.0f);
+	glVertex3f(-0.6f, -0.65f, 0.0f);
+	glVertex3f(-0.6f, 0.2f, 0.0f);
+	glVertex3f(-0.3f, 0.2f, 0.0f);
 
 	glEnd();
+}
+
+void dibujarPuerta() {
+	glBegin(GL_POLYGON);
+	glColor3f(0.8f, 0.8f, 0.6f);
+
+	glVertex3f(0.05f, -0.1f, 0.0f);
+	glVertex3f(0.05f, -0.6f, 0.0f);
+	glVertex3f(0.35f, -0.6f, 0.0f);
+	glVertex3f(0.35f, -0.1f, 0.0f);
+
+	glEnd();
+}
+
+void dibujarVentana() {
+	glBegin(GL_POLYGON);
+	glColor3f(0.0f, 0.5f, 0.8f);
+
+	glVertex3f(0.3f, 0.35f, 0.0f);
+	glVertex3f(0.3f, 0.1f, 0.0f);
+	glVertex3f(0.55f, 0.1f, 0.0f);
+	glVertex3f(0.55f, 0.35f, 0.0f);
+
+	glEnd();
+}
+
+void dibujarMarcoVentana() {
+	glBegin(GL_LINES);
+	glColor3f(0.6f, 0.3f, 0.31f);
+
+	glVertex3f(0.3f, 0.35f, 0.0f);
+	glVertex3f(0.3f, 0.1f, 0.0f);
+
+	glVertex3f(0.55f, 0.1f, 0.0f);
+	glVertex3f(0.55f, 0.35f, 0.0f);
+
+	glVertex3f(0.3f, 0.1f, 0.0f);
+	glVertex3f(0.55f, 0.1f, 0.0f);
+
+	glVertex3f(0.55f, 0.35f, 0.0f);
+	glVertex3f(0.3f, 0.35f, 0.0f);
+
+	glEnd();
+
 }
 
 void dibujar() {
 	dibujarCielo();
 	dibujarCasa();
 	dibujarTecho();
+	dibujarArbol();
 	dibujarCirculo(-0.6f, 0.0f, 0.2f);
 	dibujarCirculo(-0.8f, -0.1f, 0.2f);
 	dibujarCirculo(-0.7f, 0.15f, 0.2f);
@@ -105,6 +159,10 @@ void dibujar() {
 	dibujarNube(-0.15f, 0.72f, 0.15f);
 	dibujarNube(0.65f, 0.65f, 0.2f);
 	dibujarNube(0.75f, 0.72f, 0.15f);
+	dibujarSol(-0.78f, 0.72f, 0.2f);
+	dibujarPuerta();
+	dibujarVentana();
+	dibujarMarcoVentana();
 }
 
 int main()
