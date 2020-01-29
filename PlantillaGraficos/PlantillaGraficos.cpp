@@ -29,6 +29,28 @@ void dibujarSol(GLfloat x, GLfloat y, GLfloat radio) {
 		glVertex3f((radio * cos(i * 3.14159 / 180.0)) + x, (radio * sin(i * 3.14159 / 180.0) + y), 0.0f);
 	}
 	glEnd();
+
+    glBegin(GL_LINES);
+    glColor3f(1.0f, 1.0f, 0.0f);
+
+    glVertex3f(-0.55f, 0.7f, 0.0f);
+    glVertex3f(-0.4f, 0.6, 0.0f);
+
+    glVertex3f(-0.55f, 0.6f, 0.0f);
+    glVertex3f(-0.4f, 0.5, 0.0f);
+
+    glVertex3f(-0.65f, 0.55f, 0.0f);
+    glVertex3f(-0.5f, 0.45f, 0.0f);
+
+    glEnd();
+}
+void dibujarPuerta2(GLfloat x, GLfloat y, GLfloat radio) {
+    glBegin(GL_POLYGON);
+    glColor3f(0.3f, 0.3f, 0.0f);
+    for (double i = 0; i < 360.0; i += 5.0) {
+        glVertex3f((radio * cos(i * 3.14159 / 180.0)) + x, (radio * sin(i * 3.14159 / 180.0) + y), 0.0f);
+    }
+    glEnd();
 }
 
 void dibujarNube(GLfloat x, GLfloat y, GLfloat radio) {
@@ -141,8 +163,33 @@ void dibujarMarcoVentana() {
 	glVertex3f(0.55f, 0.35f, 0.0f);
 	glVertex3f(0.3f, 0.35f, 0.0f);
 
-	glEnd();
+    glVertex3f(0.425f, 0.1f, 0.0f);
+    glVertex3f(0.425f, 0.35f, 0.0f);
 
+    glVertex3f(0.55f, 0.225f, 0.0f);
+    glVertex3f(0.3f, 0.225f, 0.0f);
+
+	glEnd();
+}
+
+void dibujarLineasNegras() {
+    glBegin(GL_LINES);
+    glColor3f(0.0f, 0.0f, 0.0f);
+
+    glVertex3f(-0.5f, -0.75f, 0.0f);
+    glVertex3f(-0.4f, -0.7f, 0.0f);
+
+    glVertex3f(-0.5f, -0.75f, 0.0f);
+    glVertex3f(-0.6f, -0.7f, 0.0f);
+
+
+    glVertex3f(0.3f, -0.85f, 0.0f);
+    glVertex3f(0.2f, -0.8f, 0.0f);
+
+    glVertex3f(0.3f, -0.85f, 0.0f);
+    glVertex3f(0.4f, -0.8f, 0.0f);
+
+    glEnd();
 }
 
 void dibujar() {
@@ -153,16 +200,18 @@ void dibujar() {
 	dibujarCirculo(-0.6f, 0.0f, 0.2f);
 	dibujarCirculo(-0.8f, -0.1f, 0.2f);
 	dibujarCirculo(-0.7f, 0.15f, 0.2f);
+    dibujarSol(-0.78f, 0.72f, 0.2f);
 	dibujarNube(0.3f, 0.9f, 0.2f);
 	dibujarNube(0.15f, 0.85f, 0.2f);
 	dibujarNube(-0.25f, 0.65f, 0.2f);
 	dibujarNube(-0.15f, 0.72f, 0.15f);
 	dibujarNube(0.65f, 0.65f, 0.2f);
 	dibujarNube(0.75f, 0.72f, 0.15f);
-	dibujarSol(-0.78f, 0.72f, 0.2f);
 	dibujarPuerta();
+    dibujarPuerta2(0.3f, -0.3f, 0.025f);
 	dibujarVentana();
 	dibujarMarcoVentana();
+    dibujarLineasNegras();
 }
 
 int main()
